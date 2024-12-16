@@ -17,7 +17,7 @@ class FacebookPostScraper:
         options = Options()
         options.headless = True
 
-        self.driver = webdriver.Chrome(options=options)
+        self.driver = webdriver.Chrome()
 
     def open_post(self, url):
         """Open a Facebook post URL."""
