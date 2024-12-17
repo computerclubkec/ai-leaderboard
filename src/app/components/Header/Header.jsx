@@ -26,7 +26,7 @@ const Header = () => {
             <p className="text-xs sm:text-xs md:text-sm lg:text-sm text-gray-600">
                 Developed and Maintained by
                 <span
-                    className="font-semibold hover:cursor-pointer"
+                    className="font-semibold cursor-pointer"
                     onClick={() => {
                         window.open(fbPage, "_blank");
                     }}
