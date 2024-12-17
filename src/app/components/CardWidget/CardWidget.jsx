@@ -7,7 +7,7 @@ const CardWidget = (props) => {
     const crownColors = {
         1: "#FFD700",
         2: "#cccaca",
-        3: "#C88E53",
+        // 3: "#C88E53",
     };
 
     return (
@@ -18,7 +18,7 @@ const CardWidget = (props) => {
             }}
         >
             {/* Crown Icon */}
-            {props.rank <= 3 && (
+            {props.rank <= 2 && (
                 <div
                     className="absolute -top-4 -right-4 p-2 rounded-full shadow-lg z-10"
                     style={{ backgroundColor: crownColors[props.rank] }}
