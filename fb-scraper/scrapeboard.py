@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.safari.options import Options
+from selenium.webdriver.chrome.options import Options
 import re
 import csv
 import json
@@ -13,11 +13,11 @@ class FacebookPostScraper:
         self.csv_file = csv_file
         self.final_data = []
 
-        # Set up headless Safari options
+        # Set up headless 
         options = Options()
         options.headless = True
 
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=options)
 
     def open_post(self, url):
         """Open a Facebook post URL."""
