@@ -15,7 +15,7 @@ class FacebookPostScraper:
 
         # Set up headless 
         options = Options()
-        options.headless = True
+        options.add_argument("--headless")
 
         self.driver = webdriver.Chrome(options=options)
 
@@ -62,16 +62,23 @@ class FacebookPostScraper:
                     no_of_reactions = 0
 
                 try:
-                    shares_element = self.driver.find_element(
-                        By.CSS_SELECTOR,
-                        "div.x1n2onr6 > div > div.x9f619.x1ja2u2z.x78zum5.x2lah0s.x1n2onr6.x1qughib.x1qjc9v5.xozqiw3.x1q0g3np.xykv574.xbmpl8g.x4cne27.xifccgj > div:nth-child(2) > span > div > div > div:nth-child(1) > span > span"
-                    )
-                    shares_text = shares_element.text
-                    if "K" in shares_text:
-                        no_of_shares = int(float(shares_text.replace("K", "")) * 1000)
-                    else:
-                        no_of_shares = int(shares_text.replace(",", ""))
-                except Exception:
+                    try:
+                        shares_element = self.driver.find_element(
+                            By.CSS_SELECTOR,
+                            "div.x1n2onr6 > div > div.x9f619.x1ja2u2z.x78zum5.x2lah0s.x1n2onr6.x1qughib.x1qjc9v5.xozqiw3.x1q0g3np.xykv574.xbmpl8g.x4cne27.xifccgj > div:nth-child(2) > span > div > div > div:nth-child(1) > span > span"
+                        )
+                    except Exception:
+                        shares_element = self.driver.find_element(
+                            By.CSS_SELECTOR,
+                            "div > div:nth-child(1) > div > div.x9f619.x1n2onr6.x1ja2u2z > div > div > div.x78zum5.xdt5ytf.x1t2pt76.x1n2onr6.x1ja2u2z.x10cihs4 > div:nth-child(1) > div > div.x9f619.x1n2onr6.x1ja2u2z.x78zum5.xdt5ytf.x2lah0s.x193iq5w.xeuugli.x2bj2ny.x85a59c.x1t2pt76.x12slza2.x1dqk2q1.x1mnsmir > div > div > div > div.x78zum5.xdt5ytf.x1iyjqo2.x1n2onr6 > div:nth-child(2) > div > div.x1n2onr6 > div > div.x9f619.x1ja2u2z.x78zum5.x2lah0s.x1n2onr6.x1qughib.x1qjc9v5.xozqiw3.x1q0g3np.xykv574.xbmpl8g.x4cne27.xifccgj > div > span > div > div > div:nth-child(1) > span > span"
+                        )
+                    finally:
+                        shares_text = shares_element.text
+                        if "K" in shares_text:
+                            no_of_shares = int(float(shares_text.replace("K", "")) * 1000)
+                        else:
+                            no_of_shares = int(shares_text.replace(",", ""))
+                except Exception as e:
                     no_of_shares = 0
 
                 try:
