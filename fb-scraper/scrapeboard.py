@@ -15,7 +15,7 @@ class FacebookPostScraper:
 
         # Set up headless 
         options = Options()
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
 
         self.driver = webdriver.Chrome(options=options)
 
