@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 const Header = () => {
+    const fbPage = "https://www.facebook.com/computerclubkec";
+
     return (
         <div className="w-full h-auto flex flex-col justify-center items-center mb-4">
             <div className="w-full h-36 flex justify-center items-center">
@@ -23,7 +25,15 @@ const Header = () => {
 
             <p className="text-xs sm:text-xs md:text-sm lg:text-sm text-gray-600">
                 Developed and Maintained by
-                <span className="font-semibold"> KEC Computer Club</span>
+                <span
+                    className="font-semibold cursor-pointer"
+                    onClick={() => {
+                        window.open(fbPage, "_blank");
+                    }}
+                >
+                    {" "}
+                    KEC Computer Club
+                </span>
             </p>
         </div>
     );
